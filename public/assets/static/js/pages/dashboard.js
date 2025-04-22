@@ -125,10 +125,6 @@ let optionsAmerica = {
   ...optionsEurope,
   colors: ["#008b75"],
 }
-let optionsIndia = {
-  ...optionsEurope,
-  colors: ["#ffc434"],
-}
 let optionsIndonesia = {
   ...optionsEurope,
   colors: ["#dc3545"],
@@ -150,10 +146,6 @@ var chartAmerica = new ApexCharts(
   document.querySelector("#chart-america"),
   optionsAmerica
 )
-var chartIndia = new ApexCharts(
-  document.querySelector("#chart-india"),
-  optionsIndia
-)
 var chartIndonesia = new ApexCharts(
   document.querySelector("#chart-indonesia"),
   optionsIndonesia
@@ -161,7 +153,6 @@ var chartIndonesia = new ApexCharts(
 
 chartIndonesia.render()
 chartAmerica.render()
-chartIndia.render()
 chartEurope.render()
 chartProfileVisit.render()
 chartVisitorsProfile.render()
