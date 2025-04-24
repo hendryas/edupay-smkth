@@ -65,7 +65,7 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="form-element-input.html" class="submenu-link">Manajemen Siswa</a>
+                                    <a href="" class="submenu-link">Manajemen Siswa</a>
 
                                 </li>
 
@@ -75,7 +75,7 @@
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-element-select.html" class="submenu-link">Manajemen User</a>
+                                    <a href="{{ route('admin.users.index') }}" class="submenu-link">Manajemen User</a>
 
                                 </li>
 
