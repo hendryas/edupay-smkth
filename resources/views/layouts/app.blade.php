@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    @include('layouts.header')
-<body>
-    <div id="app">
-        @include('layouts.sidebar')
-        <div id="main" class="layout-navbar">
-            @include('layouts.topbar')
-            <div id="main-content">
-                <div class="page-content">
-                    @yield('content')
-                </div>
-                @include('layouts.footer')
-            </div>
-        </div>
+@include('layouts.header')
+
+<div id="app">
+    @include('layouts.sidebar')
+
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        @yield('content')
+
+        @include('layouts.footer')
     </div>
-</body>
-</html>
+</div>
+
+@include('layouts.scripts')
