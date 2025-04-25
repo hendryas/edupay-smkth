@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('management.user.index', compact('users'));
     }
 
@@ -45,7 +45,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'User created!');
+        return response()->json(['message' => 'User berhasil ditambahkan']);
     }
 
     /**
