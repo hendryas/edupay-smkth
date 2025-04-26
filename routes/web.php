@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BillingTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 // ---- FROM HERE ----
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('billing-types', BillingTypeController::class);
 });
 
 require __DIR__.'/auth.php';

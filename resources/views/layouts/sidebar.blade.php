@@ -65,32 +65,23 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="" class="submenu-link">Manajemen Siswa</a>
+                                    <a href="" class="submenu-link">Kelola Siswa</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-element-input-group.html" class="submenu-link">Manajemen Tagihan</a>
+                                    <a href="form-element-input-group.html" class="submenu-link">Kelola Tagihan</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="{{ route('admin.users.index') }}" class="submenu-link">Manajemen User</a>
+                                    <a href="{{ route('admin.users.index') }}" class="submenu-link">Kelola User</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-element-radio.html" class="submenu-link">Radio</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="form-element-checkbox.html" class="submenu-link">Checkbox</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="form-element-textarea.html" class="submenu-link">Textarea</a>
+                                    <a href="{{ route('admin.billing-types.index') }}" class="submenu-link">Kelola Jenis
+                                        Tagihan</a>
 
                                 </li>
 
@@ -149,12 +140,12 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="table-datatable.html" class="submenu-link">Laporan Harian/Bulanan</a>
+                                    <a href="table-datatable.html" class="submenu-link">L. Harian/Bulanan</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="table-datatable-jquery.html" class="submenu-link">Rekapitulasi
+                                    <a href="table-datatable-jquery.html" class="submenu-link">Rekap
                                         Pembayaran</a>
 
                                 </li>
