@@ -45,7 +45,10 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return response()->json(['message' => 'User berhasil ditambahkan']);
+        return response()->json([
+            'message' => 'User created successfully!',
+            'redirect' => route('admin.users.index')
+        ]);
     }
 
     /**
@@ -69,27 +72,29 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'role' => 'required',
-        ]);
+        $data = $request->only('name', 'email', 'role');
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-        ]);
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
 
-        return redirect()->route('admin.users.index')->with('success', 'User updated!');
+        $user->update($data);
+
+        return response()->json([
+            'message' => 'User updated successfully!',
+            'redirect' => route('admin.users.index')
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
-    {
-        $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User deleted!');
-    }
+{
+    $user->delete(); // ini soft delete
+    return response()->json([
+        'message' => 'User deleted successfully'
+    ]);
+}
+
 }
