@@ -69,35 +69,29 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalTambahLabel">Tambah User Baru</h5>
+                        <h5 class="modal-title" id="modalTambahLabel">Tambah Jenis Pembayaran Baru</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label>Peran</label>
-                            <select name="role" class="form-control" required>
-                                <option value="">-- Pilih Role --</option>
-                                <option value="admin">Admin</option>
-                                <option value="bendahara">Bendahara</option>
-                                <option value="kepala_sekolah">Kepala Sekolah</option>
-                                <option value="ortu">Orang Tua</option>
-                            </select>
-                            <div class="invalid-feedback" id="error-role"></div>
+                            <label>Kode</label>
+                            <input type="text" name="code" class="form-control" required>
+                            <div class="invalid-feedback" id="error-code"></div>
                         </div>
                         <div class="mb-3">
-                            <label>Nama</label>
-                            <input type="text" name="name" class="form-control" required>
-                            <div class="invalid-feedback" id="error-name"></div>
+                            <label>Jenis Pembiayaan</label>
+                            <input type="text" name="billing_type" class="form-control" required>
+                            <div class="invalid-feedback" id="error-billing-type"></div>
                         </div>
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" class="form-control" required>
-                            <div class="invalid-feedback" id="error-email"></div>
+                            <label>Deskripsi</label>
+                            <input type="text" name="description" class="form-control" required>
+                            <div class="invalid-feedback" id="error-description"></div>
                         </div>
                         <div class="mb-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
-                            <div class="invalid-feedback" id="error-password"></div>
+                            <label>Amount</label>
+                            <input type="text" name="amount" class="form-control" required>
+                            <div class="invalid-feedback" id="error-amount"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -118,44 +112,34 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalEditLabel">Edit User</h5>
+                        <h5 class="modal-title" id="modalEditLabel">Edit Jenis Pembayaran Baru</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                     </div>
-
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label>Peran</label>
-                            <select name="role" id="edit_role" class="form-control" required>
-                                <option value="">-- Pilih Role --</option>
-                                <option value="admin">Admin</option>
-                                <option value="bendahara">Bendahara</option>
-                                <option value="kepala_sekolah">Kepala Sekolah</option>
-                                <option value="ortu">Orang Tua</option>
-                            </select>
-                            <div class="invalid-feedback" id="error-role"></div>
+                            <label>Kode</label>
+                            <input type="text" name="code" id="edit_code" class="form-control" required>
+                            <div class="invalid-feedback" id="error-code"></div>
                         </div>
-
                         <div class="mb-3">
-                            <label>Nama</label>
-                            <input type="text" name="name" id="edit_name" class="form-control" required>
-                            <div class="invalid-feedback" id="error-name"></div>
+                            <label>Jenis Pembiayaan</label>
+                            <input type="text" name="billing_type" id="edit_billing_type" class="form-control" required>
+                            <div class="invalid-feedback" id="error-billing-type"></div>
                         </div>
-
                         <div class="mb-3">
-                            <label>Email</label>
-                            <input type="email" name="email" id="edit_email" class="form-control" required>
-                            <div class="invalid-feedback" id="error-email"></div>
+                            <label>Deskripsi</label>
+                            <input type="text" name="description" id="edit_description" class="form-control"
+                                required>
+                            <div class="invalid-feedback" id="error-description"></div>
                         </div>
-
                         <div class="mb-3">
-                            <label>Password (Opsional, isi jika mau ganti)</label>
-                            <input type="password" name="password" id="edit_password" class="form-control">
-                            <div class="invalid-feedback" id="error-password"></div>
+                            <label>Amount</label>
+                            <input type="text" name="amount" id="edit_amount" class="form-control" required>
+                            <div class="invalid-feedback" id="error-amount"></div>
                         </div>
                     </div>
-
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </form>
@@ -166,13 +150,25 @@
     {{-- Jquery --}}
     <script>
         $(document).ready(function() {
+            // Only Input Number
+            $('input[name="amount"]').on('input', function() {
+                // Ambil nilai input
+                let inputValue = $(this).val();
+
+                // Hapus semua karakter yang bukan angka
+                inputValue = inputValue.replace(/[^0-9]/g, '');
+
+                // Set kembali ke input
+                $(this).val(inputValue);
+            });
+
             // Tambah Data
             $('#formTambah').on('submit', function(e) {
                 e.preventDefault(); // prevent reload
 
                 // Bersihkan error sebelumnya
                 $('.invalid-feedback').text('');
-                $('input, select').removeClass('is-invalid');
+                $('input').removeClass('is-invalid');
 
                 let formData = $(this).serialize(); // ambil semua data
 
@@ -241,7 +237,7 @@
                 // Isi ke modal
                 $('#edit_id').val(id);
                 $('#edit_code').val(code);
-                $('#edit_name').val(name);
+                $('#edit_billing_type').val(name);
                 $('#edit_description').val(description);
                 $('#edit_amount').val(amount);
 
@@ -255,7 +251,7 @@
 
                 // Bersihkan error dulu
                 $('.invalid-feedback').text('');
-                $('input, select').removeClass('is-invalid');
+                $('input').removeClass('is-invalid');
 
                 let id = $('#edit_id').val();
                 let formData = $(this).serialize();
@@ -276,7 +272,7 @@
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil!',
-                            text: 'User berhasil diupdate.',
+                            text: 'Jenis tagihan berhasil diupdate.',
                             timer: 2000,
                             showConfirmButton: false
                         }).then(() => {
