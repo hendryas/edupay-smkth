@@ -46,141 +46,140 @@
                     </div>
                 </div>
 
+                {{-- Admin Sidebar --}}
+                @if (session('role') == 'admin')
+                    <div class="sidebar-menu">
+                        <ul class="menu">
+                            <li class="sidebar-title">Menu</li>
 
-                {{-- Admin --}}
-                {{-- Orang Tua --}}
-                {{-- Bendahara --}}
-                {{-- Kepala Sekolah --}}
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+                            <li class="sidebar-item active">
+                                <a href="index.html" class="sidebar-link">
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class="sidebar-link">
+                                    <i class="bi bi-hexagon-fill"></i>
+                                    <span>Management</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="{{ route('admin.kelola-orang-tua.index') }}"
+                                            class="submenu-link">Kelola Orang Tua</a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="" class="submenu-link">Kelola Siswa</a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="form-element-input-group.html" class="submenu-link">Kelola Tagihan</a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="{{ route('admin.users.index') }}" class="submenu-link">Kelola User</a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="{{ route('admin.billing-types.index') }}" class="submenu-link">Kelola
+                                            Jenis Tagihan</a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-hexagon-fill"></i>
-                                <span>Management</span>
-                            </a>
+                            <!-- More sidebar items here -->
 
-                            <ul class="submenu ">
-                                <li class="submenu-item  ">
-                                    <a href="{{ route('admin.kelola-orang-tua.index') }}" class="submenu-link">Kelola
-                                        Orang Tua</a>
-                                </li>
+                            <li class="sidebar-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <a href="#" class="sidebar-link"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
 
-                                <li class="submenu-item  ">
-                                    <a href="" class="submenu-link">Kelola Siswa</a>
-                                </li>
+                {{-- Orang Tua Sidebar --}}
+                @if (session('role') == 'ortu')
+                    <div class="sidebar-menu">
+                        <ul class="menu">
+                            <li class="sidebar-title">Menu</li>
 
-                                <li class="submenu-item  ">
-                                    <a href="form-element-input-group.html" class="submenu-link">Kelola Tagihan</a>
-                                </li>
+                            <li class="sidebar-item active">
+                                <a href="index.html" class="sidebar-link">
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                                <li class="submenu-item  ">
-                                    <a href="{{ route('admin.users.index') }}" class="submenu-link">Kelola User</a>
-                                </li>
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class="sidebar-link">
+                                    <i class="bi bi-journal-check"></i>
+                                    <span>Transaksi Pembayaran</span>
+                                </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="form-validation-parsley.html" class="submenu-link">Lihat Semua
+                                            Pembayaran</a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="form-validation-parsley.html" class="submenu-link">Validasi
+                                            Pembayaran Manual</a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                                <li class="submenu-item  ">
-                                    <a href="{{ route('admin.billing-types.index') }}" class="submenu-link">Kelola Jenis
-                                        Tagihan</a>
-                                </li>
+                            <!-- More sidebar items here -->
 
-                            </ul>
+                            <li class="sidebar-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <a href="#" class="sidebar-link"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
 
+                {{-- Bendahara Sidebar --}}
+                @if (session('role') == 'bendahara')
+                    <div class="sidebar-menu">
+                        <ul class="menu">
+                            <li class="sidebar-title">Menu</li>
 
-                        </li>
+                            <li class="sidebar-item active">
+                                <a href="index.html" class="sidebar-link">
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-journal-check"></i>
-                                <span>Transaksi Pembayaran</span>
-                            </a>
+                            <!-- More sidebar items here -->
 
-                            <ul class="submenu ">
-
-                                <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Lihat Semua
-                                        Pembayaran</a>
-
-                                </li>
-                                <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Validasi Pembayaran
-                                        Manual</a>
-
-                                </li>
-
-                            </ul>
-
-
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-pen-fill"></i>
-                                <span>Cetak Kwitansi</span>
-                            </a>
-
-                            <ul class="submenu ">
-
-                                <li class="submenu-item  ">
-                                    <a href="form-editor-quill.html" class="submenu-link">Cetak Kwitansi</a>
-
-                                </li>
-
-                            </ul>
+                            <li class="sidebar-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <a href="#" class="sidebar-link"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
 
 
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                                <span>Laporan Keuangan</span>
-                            </a>
-                            <ul class="submenu ">
-
-                                <li class="submenu-item  ">
-                                    <a href="table-datatable.html" class="submenu-link">L. Harian/Bulanan</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="table-datatable-jquery.html" class="submenu-link">Rekap
-                                        Pembayaran</a>
-
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="application-chat.html" class='sidebar-link'>
-                                <i class="bi bi-chat-dots-fill"></i>
-                                <span>Notifikasi WhatsApp</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
-
-                            <a href="#" class="sidebar-link"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="bi bi-box-arrow-right"></i> <!-- icon logout lebih cocok -->
-                                <span>Logout</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
