@@ -6,8 +6,8 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo"
-                                    srcset=""></a>
+                            <a href="index.html"><img src="/assets/img/logo.png" alt="Logo" srcset=""
+                                    style="height: 100px"></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -63,26 +63,26 @@
                             </a>
 
                             <ul class="submenu ">
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.kelola-orang-tua.index') }}" class="submenu-link">Kelola
+                                        Orang Tua</a>
+                                </li>
 
                                 <li class="submenu-item  ">
                                     <a href="" class="submenu-link">Kelola Siswa</a>
-
                                 </li>
 
                                 <li class="submenu-item  ">
                                     <a href="form-element-input-group.html" class="submenu-link">Kelola Tagihan</a>
-
                                 </li>
 
                                 <li class="submenu-item  ">
                                     <a href="{{ route('admin.users.index') }}" class="submenu-link">Kelola User</a>
-
                                 </li>
 
                                 <li class="submenu-item  ">
                                     <a href="{{ route('admin.billing-types.index') }}" class="submenu-link">Kelola Jenis
                                         Tagihan</a>
-
                                 </li>
 
                             </ul>
@@ -157,6 +157,19 @@
                             <a href="application-chat.html" class='sidebar-link'>
                                 <i class="bi bi-chat-dots-fill"></i>
                                 <span>Notifikasi WhatsApp</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+
+                            <a href="#" class="sidebar-link"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-right"></i> <!-- icon logout lebih cocok -->
+                                <span>Logout</span>
                             </a>
                         </li>
 

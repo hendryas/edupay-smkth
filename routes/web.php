@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BillingTypeController;
+use App\Http\Controllers\Admin\OrangTuaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
 // ---- FROM HERE ----
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::resource('kelola-orang-tua', OrangTuaController::class);
     Route::resource('users', UserController::class);
     Route::resource('billing-types', BillingTypeController::class);
 });
