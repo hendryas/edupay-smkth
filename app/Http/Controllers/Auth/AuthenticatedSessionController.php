@@ -28,8 +28,23 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        session([
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+            'role' => Auth::user()->role,
+        ]);
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
+
+    protected function authenticated(Request $request, $user)
+{
+    session([
+        'name' => $user->name,
+        'email' => $user->email,
+        'role' => $user->role,
+    ]);
+}
 
     /**
      * Destroy an authenticated session.

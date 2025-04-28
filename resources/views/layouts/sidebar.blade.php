@@ -45,6 +45,12 @@
                         </div>
                     </div>
                 </div>
+
+
+                {{-- Admin --}}
+                {{-- Orang Tua --}}
+                {{-- Bendahara --}}
+                {{-- Kepala Sekolah --}}
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
