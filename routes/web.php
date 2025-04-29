@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BillingTypeController;
 use App\Http\Controllers\Admin\OrangTuaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LihatSemuaPembayaranController;
+use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationSchoolController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +24,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('ortu.dashboard');
 });
 
+// Ortu
+Route::prefix('ortu')->name('ortu.')->middleware(['auth'])->group(function () {
+    Route::resource('lihat-semua-pembayaran', LihatSemuaPembayaranController::class);
+});
+
+// Payment
+Route::post('/payment/token', [PaymentController::class, 'getSnapToken'])->name('payment.token');
+// WebHook Payment
+Route::post('/midtrans/callback', [MidtransController::class, 'handle']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

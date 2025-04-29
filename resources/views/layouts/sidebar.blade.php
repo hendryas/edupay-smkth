@@ -122,7 +122,8 @@
                                 </a>
                                 <ul class="submenu">
                                     <li class="submenu-item">
-                                        <a href="form-validation-parsley.html" class="submenu-link">Lihat Semua
+                                        <a href="{{ route('ortu.lihat-semua-pembayaran.index') }}"
+                                            class="submenu-link">Lihat Semua
                                             Pembayaran</a>
                                     </li>
                                     <li class="submenu-item">
@@ -178,7 +179,6 @@
                         </ul>
                     </div>
                 @endif
-
 
             </div>
         </div>

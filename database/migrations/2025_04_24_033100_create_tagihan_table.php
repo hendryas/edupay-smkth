@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('tagihan', function (Blueprint $table) {
             $table->id();
+            $table->integer('siswa_id')->nullable();
+            $table->integer('biling_type_id')->nullable();
             $table->string('nama_tagihan');      // Contoh: SPP Januari, Kegiatan Semester, dll.
             $table->decimal('nominal', 12, 2);   // Jumlah tagihan
             $table->string('periode');           // Misal: Januari 2025, Semester Ganjil 2024, dll.
             $table->text('deskripsi')->nullable(); // Opsional keterangan tambahan
             $table->timestamps();                // created_at, updated_at
+            $table->softDeletes();
         });
     }
 

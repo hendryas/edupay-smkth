@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\OrangTua;
 use App\Models\RegistrationSchool;
 use App\Models\Siswa;
+use App\Models\Tagihan;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -95,11 +96,27 @@ class RegisteredUserController extends Controller
             'catatan' => null,
         ]);
 
+        // 6. Insert Tagihan
+        Tagihan::create([
+            'siswa_id' => $siswa->id,
+            'biling_type_id' => '3',
+            'nama_tagihan' => 'Pendaftaran Masuk Sekolah',
+            'nominal' => 500000,
+            'periode' => '2024/2025',
+            'deskripsi' => 'Pendaftaran masuk tahun ajaran baru',
+        ]);
+
         DB::commit();
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        session([
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role, // pastikan tabel 'users' ada kolom 'role'
+        ]);
 
         return redirect(route('dashboard', absolute: false));
     } catch (\Exception $e) {

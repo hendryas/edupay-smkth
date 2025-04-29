@@ -9,6 +9,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // $name = Session::get('role');
+        // var_dump($name);
+        // die;
+
         return view('dashboard');
     }
 }
