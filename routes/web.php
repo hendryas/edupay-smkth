@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BillingTypeController;
 use App\Http\Controllers\Admin\OrangTuaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HistoryPembayaranController;
 use App\Http\Controllers\LihatSemuaPembayaranController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\PaymentController;
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
 // Ortu
 Route::prefix('ortu')->name('ortu.')->middleware(['auth'])->group(function () {
     Route::resource('lihat-semua-pembayaran', LihatSemuaPembayaranController::class);
+    Route::resource('history-pembayaran', HistoryPembayaranController::class);
 });
 
 // Payment

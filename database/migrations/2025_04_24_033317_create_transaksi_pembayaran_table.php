@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('status', ['pending', 'lunas', 'gagal'])->default('pending');
             $table->string('dibuat_oleh'); // Bisa simpan nama user/admin yang mencatat
             $table->timestamps();          // created_at & updated_at
+            $table->softDeletes();
         });
     }
 

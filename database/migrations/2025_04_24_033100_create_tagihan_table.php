@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('nominal', 12, 2);   // Jumlah tagihan
             $table->string('periode');           // Misal: Januari 2025, Semester Ganjil 2024, dll.
             $table->text('deskripsi')->nullable(); // Opsional keterangan tambahan
+            $table->string('status_pembayaran')->nullable();
             $table->timestamps();                // created_at, updated_at
             $table->softDeletes();
         });

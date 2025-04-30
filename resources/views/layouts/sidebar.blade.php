@@ -127,8 +127,9 @@
                                             Pembayaran</a>
                                     </li>
                                     <li class="submenu-item">
-                                        <a href="form-validation-parsley.html" class="submenu-link">Validasi
-                                            Pembayaran Manual</a>
+                                        <a href="{{ route('ortu.history-pembayaran.index') }}"
+                                            class="submenu-link">History
+                                            Pembayaran</a>
                                     </li>
                                 </ul>
                             </li>
